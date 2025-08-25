@@ -1,2 +1,21 @@
-// 구현은 직접 작성하세요. 허용 헤더만 사용
-int main() { return 0; }
+#include <iostream>
+
+void sort_inplace(long long* a, int n);
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    int n;
+    if (!(std::cin >> n)) return 0;
+    long long* a = (long long*)malloc(sizeof(long long) * (size_t)n);
+    for (int i = 0; i < n; ++i) std::cin >> a[i];
+    sort_inplace(a, n);
+    for (int i = 0; i < n; ++i) {
+        if (i) std::cout << ' ';
+        std::cout << a[i];
+    }
+    std::cout << '\n';
+    free(a);
+    return 0;
+}

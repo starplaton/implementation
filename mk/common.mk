@@ -14,7 +14,7 @@ PROB_ABS := $(abspath $(REPO_ROOT)/$(PROB))
 endif
 
 BIN := $(PROB_ABS)/build/main
-SRC := $(PROB_ABS)/main.cpp
+SRCS := $(wildcard $(PROB_ABS)/*.cpp)
 
 CXX ?= g++
 CXXFLAGS ?= -O2 -pipe -std=c++20 -Wall -Wextra -Wshadow -Wformat=2 -Wconversion -Wno-sign-conversion -fno-exceptions -fno-rtti
@@ -37,9 +37,9 @@ INCLUDES := -I$(REPO_ROOT)/lib
 
 build: $(BIN)
 
-$(BIN): $(SRC) $(REPO_ROOT)/mk/common.mk $(wildcard $(REPO_ROOT)/lib/*.hpp)
+$(BIN): $(SRCS) $(REPO_ROOT)/mk/common.mk $(wildcard $(REPO_ROOT)/lib/*.hpp)
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $@ $(SRC) $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $@ $(SRCS) $(LDFLAGS)
 
 # Run single case: make run PROB=... [CASE=path/to/input]
 CASE ?= $(PROB_ABS)/cases/1.in
