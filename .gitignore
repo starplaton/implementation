@@ -1,0 +1,22 @@
+**/build/
+**/*.actual
+# Build artifacts
+**/build/
+*.o
+*.obj
+*.exe
+a.out
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Temporary
+*.tmp
+*.temp
+*.log
+
+# Test artifacts
+*.actual
+
